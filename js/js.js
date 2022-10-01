@@ -28,10 +28,12 @@ const doGet = (url) => {
     return new Promise(promiseCallback);
 }
 
-var pokemon = 'ditto'
-doGet(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(console.log).catch(console.error);
-
-
- 
-
+function submit (){
+    var pokemon = document.getElementById('inputpokemon').value; //pego o que foi escrito e jogo dentro da variável
+    doGet(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(console.log).catch(console.error); //aqui eu joguei dentro da url para pegar o pokemon desejado
+    var img = document.createElement("IMG");
+        img.src= `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+        document.body.appendChild(img);
+}
+document.getElementById('submit').addEventListener('click', submit);
 
