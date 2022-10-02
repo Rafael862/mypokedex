@@ -10,6 +10,14 @@
     border-radius: 7px;
 }
 
-#submit{
+.namepokemon{
+    padding-top: 18px;
+}
+.imgpokemon{
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
     
+    text-align: center;
+    border-radius: 50%;
 }
