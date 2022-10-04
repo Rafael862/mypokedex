@@ -1,53 +1,8 @@
-/*function insert(){
-
-
-    let namepokemon = document.getElementById('inputpokemon').value;
-    //console.log(namepokemon);
-    let imgpokemon = document.createElement("div");
-    let linkimg = document.create(`<img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${namepokemon}.gif" alt="">`);
-        imgpokemon.appendChild(linkimg);
-        let body = document.querySelector('.imgpokemon');
-        body.appendChild(imgpokemon);
-        console.log(imgpokemon);
-    
-
-}
-
-document.getElementById('submit').onclick = insert;*/
-
-/*const doGet = (url) => {
-    const promiseCallback = (resolve, reject) => {
-            fetch(url) // retorna uma promisse, então logo apos vem o then
-        .then((response) => { // o response contem algumas informações que vieram do fetch API  
-            if (!response.ok) throw  new Error('Erro ao executar requisição, status' + response.status);
-            return response.json();//retorna um objeto
-    })
-        .then(resolve)
-        .then(data)
-        .catch(reject);
-    }
-    return new Promise(promiseCallback);
-}
-
-function submit (){
-    var pokemon = document.getElementById('inputpokemon').value; //pego o que foi escrito e jogo dentro da variável
-    doGet(`https://pokeapi.co/api/v2/pokemon/${pokemon}`).then(console.log).catch(console.error); //aqui eu joguei dentro da url para pegar o pokemon desejado
-    //let img = data['sprites']['front_defaut'];
-    document.getElementById('pic').setAttribute('src', doGet);
-}
-document.getElementById('submit').addEventListener('click', submit);*/
-
  function submit() {
 
-    var pokemon = document.getElementById('inputpokemon').value;
-
- console.log(pokemon);
-
- 
- 
-
-//let pokemon = 25;
-let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+    var pokemon = '25'; //document.getElementById('inputpokemon').value;
+    
+    let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
     fetch(url)
     .then((response) =>{
         return response.json();
@@ -57,7 +12,14 @@ let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
         document.querySelector('.namepokemon').innerHTML = data['name'];
         let img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
         document.getElementById('pic').setAttribute('src', img);
-    })
+        document.getElementById('tipo').innerHTML = data['types'][0]['type']['name'];
+        document.getElementById('atk').innerHTML = data['stats']['1']['stat']['name'] + ':';
+        document.getElementById('batk').innerHTML = data['stats']['1']['base_stat'];
+        document.getElementById('def').innerHTML = data['stats']['2']['stat']['name'] + ':';
+        document.getElementById('bdef').innerHTML = data['stats']['2']['base_stat'];
+        document.getElementById('spe').innerHTML = data['stats']['5']['stat']['name'] + ':';
+        document.getElementById('bspe').innerHTML = data['stats']['5']['base_stat'];
+    })  
     .catch((erro) => {
         console.log('Erro: ' + erro)
     });
@@ -65,6 +27,4 @@ let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
 }
 
     
-    
-document.getElementById('submit').addEventListener('click', submit);
-    //document.getElementById('submit').onclick = loadapi;
+ submit();
