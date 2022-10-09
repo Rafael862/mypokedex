@@ -1,4 +1,4 @@
- function submit() {
+function submit() {
 
     var pokemon = document.getElementById('inputpokemon').value;
     
@@ -8,7 +8,6 @@
         return response.json();
     })
     .then((data) =>{
-        console.log(data);
         document.querySelector('.namepokemon').innerHTML = data['name'];
         let img = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'];
         document.getElementById('pic').setAttribute('src', img);
@@ -19,17 +18,17 @@
         document.getElementById('bdef').innerHTML = data['stats']['2']['base_stat'];
         document.getElementById('spe').innerHTML = data['stats']['5']['stat']['name'] + ':';
         document.getElementById('bspe').innerHTML = data['stats']['5']['base_stat'];
+
     })  
+    
     .catch((erro) => {
         console.log('Erro: ' + erro)
         alert('nome inválido')
     });
 
+
+    
 }
-function clear(){
-    //document.getElementById('inputpokemon').innerHTML = '';
-    alert('teste');
- }
- document.getElementById('submit').addEventListener('click', submit, clear);
+document.getElementById('submit').addEventListener('click', submit);
 
 
