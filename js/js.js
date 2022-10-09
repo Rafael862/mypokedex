@@ -1,6 +1,6 @@
  function submit() {
 
-    var pokemon = '25'; //document.getElementById('inputpokemon').value;
+    var pokemon = document.getElementById('inputpokemon').value;
     
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
     fetch(url)
@@ -22,9 +22,14 @@
     })  
     .catch((erro) => {
         console.log('Erro: ' + erro)
+        alert('nome inválido')
     });
 
 }
+function clear(){
+    //document.getElementById('inputpokemon').innerHTML = '';
+    alert('teste');
+ }
+ document.getElementById('submit').addEventListener('click', submit, clear);
 
-    
- submit();
+
